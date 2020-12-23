@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "name": "名取と一緒",
+  "version": "1.0",
+  "content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"content.js"
+			]
+		}
+  ],
+  "background": {
+      "scripts": [
+          "background.js"
+      ]
+  },
+  "permissions": [
+		"tabs"
+  ],
+  "web_accessible_resources": [
+    "*.mp3",
+    "*.js"
+  ]
+}
