@@ -12,6 +12,7 @@
         "persistent": false
     },
     "permissions": [
+        "https://script.google.com/macros/s/*",
         "tabs"
     ],
     "web_accessible_resources": [
