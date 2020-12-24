@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "名取と一緒",
+    "description": "名取といっしょに作業ができる",
+    "version": "0.0.1",
+    "browser_action": {
+        "default_icon": "icon16.png",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["js/background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "tabs"
+    ],
+    "web_accessible_resources": [
+        "*.mp3",
+        "*.js"
+    ]
+}
