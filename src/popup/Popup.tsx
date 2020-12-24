@@ -59,31 +59,36 @@ export default function Popup() {
 
   return (
     <div className="popupContainer">
-      {loading ? (
-        <p>loadなう</p>
-      ) : liveData.length > 0 ? (
-        liveData.map((data) => {
-          return (
-            <div key={data.id} className="contents">
-              <a
-                onClick={() => {
-                  openLivePage(data.url)
-                }}
-              >
-                <div className="thumbnail">
-                  <img src={data.thumbnail} alt={data.title} />
-                </div>
-                <div className="description">
-                  <h3>{data.title}</h3>
-                  <p>{data.description}</p>
-                </div>
-              </a>
-            </div>
-          )
-        })
-      ) : (
-        <p>データがないよ</p>
-      )}
+      <div className="popupWrapper">
+        {loading ? (
+          <p>loadなう</p>
+        ) : liveData.length > 0 ? (
+          <ul className="list">
+            {liveData.map((data) => {
+              return (
+                <li key={data.id} className="contents">
+                  <a
+                    onClick={() => {
+                      openLivePage(data.url)
+                    }}
+                  >
+                    <div className="thumbnail">
+                      <img src={data.thumbnail} alt={data.title} />
+                    </div>
+                    <div className="description">
+                      <h3>{data.title}</h3>
+                      <p>{data.description}</p>
+                    </div>
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        ) : (
+          <p>データがないよ</p>
+        )}
+        <div className="popupFooter">footer</div>
+      </div>
     </div>
   )
 }
