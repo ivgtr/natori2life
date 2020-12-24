@@ -1,6 +1,7 @@
-body {
+* {
   padding: 0;
   margin: 0;
+  background-color: #efc8d8;
 }
 
 .popupContainer {
@@ -8,8 +9,10 @@ body {
   height: 480px;
   .contents {
     width: 100%;
-    margin-top: 20px;
     cursor: pointer;
+    &:nth-of-type(n + 2) {
+      margin-top: 15px;
+    }
     & > a {
       display: grid;
       grid-template-columns: 120px 1fr;
@@ -34,12 +37,12 @@ body {
         padding: 5px 5px 0;
         h3 {
           margin: 0;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: bold;
         }
         p {
           display: -webkit-box;
-          margin: 5px;
+          margin: 2px;
           overflow: hidden;
           font-size: 11px;
           line-height: 1.5;
