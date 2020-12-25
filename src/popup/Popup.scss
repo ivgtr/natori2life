@@ -1,55 +1,55 @@
-* {
-  padding: 0;
-  margin: 0;
-}
 body {
   background-color: #feeded;
 }
 
-.popupContainer {
+.popupWrapper {
   width: 360px;
   height: 480px;
   overflow: hidden;
-  .popupWrapper {
-    height: 100%;
-    overflow-x: scroll;
-    .list {
-      .contents {
-        width: 100%;
-        cursor: pointer;
-        &:nth-of-type(n + 2) {
+  .popupContainer {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    .popupList {
+      padding-bottom: 15px;
+      &Item {
+        &:not(:first-child) {
           margin-top: 15px;
         }
-        & > a {
+        .popupLabel {
+          padding: 5px;
+          font-size: 21px;
+          font-weight: bold;
+          color: #db1743;
+        }
+        &Card {
           display: grid;
-          grid-template-columns: 120px 1fr;
-          width: 100%;
-          height: 0;
-          padding-bottom: 90px;
-          overflow: hidden;
-          & > .thumbnail {
-            position: relative;
+          cursor: pointer;
+          background-color: #fff;
+          box-shadow: 0 0 5px rgba(221, 212, 185, 0.3);
+          transition: all 0.2s ease 0s;
+          &:hover {
+            background-color: #eee;
+            box-shadow: 0 0 10px rgba(221, 212, 185, 0.6);
+          }
+          .popupThumbnail {
             width: 100%;
-            height: 0;
-            padding-bottom: 75%;
-            overflow: hidden;
             & > img {
-              position: absolute;
               width: 100%;
               height: 100%;
               object-fit: contain;
             }
           }
-          & > .description {
-            padding: 5px 5px 0;
-            h3 {
-              margin: 0;
+          .popupDescription {
+            padding: 5px;
+            & > h3 {
               font-size: 13px;
               font-weight: bold;
             }
-            p {
+            & > p {
               display: -webkit-box;
-              margin: 2px;
+              margin-top: 2.5px;
               overflow: hidden;
               font-size: 11px;
               line-height: 1.5;
@@ -59,13 +59,34 @@ body {
             }
           }
         }
+        &.popupUpcoming {
+          .popupListItemCard {
+            grid-template-columns: 1fr;
+          }
+        }
+        &.popupCompleted {
+          .popupListItemCard {
+            grid-template-columns: 120px 1fr;
+          }
+        }
       }
     }
-    .popupFooter {
+    .popupNone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      height: 30px;
-      margin-top: auto;
-      margin-bottom: 0;
+      height: 100%;
+      background-color: #282323;
+      .popupNoneDescription {
+        font-size: 17px;
+        font-weight: bold;
+        color: #fff;
+      }
+      .popupNoneImage {
+        width: 60%;
+      }
     }
   }
 }
