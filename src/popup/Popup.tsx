@@ -60,12 +60,6 @@ const dummy = [
   }
 ]
 
-declare global {
-  interface Window {
-    io: SocketIOClientStatic
-  }
-}
-
 type liveData = {
   id: string
   url: string
