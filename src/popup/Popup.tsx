@@ -2,63 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './reset.scss'
 import './Popup.scss'
 
-const dummy = [
-  {
-    id: 'a',
-    url: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    thumbnail: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    title: 'さなちゃんねるサムネイル選手権！～雑振り返りを添えて～',
-    description:
-      '【企画内容】 Twitterのハッシュタグ #人間以外動物家族描いて名取 にて募集した同居ご家族動物の写真を絵にしていく！ 眠くなったら終了！バブちゃんなので… （最初6 ...',
-    state: 'upcoming',
-    channelTitle: 'a',
-    channelId: 'a'
-  },
-  {
-    id: 'b',
-    url: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    thumbnail: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    title: 'さなちゃんねるサムネイル選手権！～雑振り返りを添えて～',
-    description:
-      '【企画内容】 Twitterのハッシュタグ #人間以外動物家族描いて名取 にて募集した同居ご家族動物の写真を絵にしていく！ 眠くなったら終了！バブちゃんなので… （最初6 ...',
-    state: 'none',
-    channelTitle: 'a',
-    channelId: 'a'
-  },
-  {
-    id: 'c',
-    url: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    thumbnail: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    title: 'さなちゃんねるサムネイル選手権！～雑振り返りを添えて～',
-    description:
-      '【企画内容】 Twitterのハッシュタグ #人間以外動物家族描いて名取 にて募集した同居ご家族動物の写真を絵にしていく！ 眠くなったら終了！バブちゃんなので… （最初6 ...',
-    state: 'none',
-    channelTitle: 'a',
-    channelId: 'a'
-  },
-  {
-    id: 'd',
-    url: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    thumbnail: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    title: 'さなちゃんねるサムネイル選手権！～雑振り返りを添えて～',
-    description:
-      '【企画内容】 Twitterのハッシュタグ #人間以外動物家族描いて名取 にて募集した同居ご家族動物の写真を絵にしていく！ 眠くなったら終了！バブちゃんなので… （最初6 ...',
-    state: 'none',
-    channelTitle: 'a',
-    channelId: 'a'
-  },
-  {
-    id: 'e',
-    url: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    thumbnail: 'https://i.ytimg.com/vi/egnnzp19Sqw/hqdefault_live.jpg',
-    title: 'さなちゃんねるサムネイル選手権！～雑振り返りを添えて～',
-    description:
-      '【企画内容】 Twitterのハッシュタグ #人間以外動物家族描いて名取 にて募集した同居ご家族動物の写真を絵にしていく！ 眠くなったら終了！バブちゃんなので… （最初6 ...',
-    state: 'none',
-    channelTitle: 'a',
-    channelId: 'a'
-  }
-]
+const url =
+  'https://script.google.com/macros/s/AKfycbxSsBb1T0Mb46CCY3SsCl_d0lNtgngiy2kDGlULqU9Cz8oVfbMj/exec'
 
 type liveData = {
   id: string
@@ -80,12 +25,9 @@ export default function Popup() {
       setTabIndex(index)
     })
     const data = async () => {
-      await fetch(
-        'https://script.google.com/macros/s/AKfycbxSsBb1T0Mb46CCY3SsCl_d0lNtgngiy2kDGlULqU9Cz8oVfbMj/exec',
-        {
-          method: 'GET'
-        }
-      )
+      await fetch(url, {
+        method: 'GET'
+      })
         .then((response) => response.json())
         .then((data) => {
           setLoading(false)
@@ -100,10 +42,6 @@ export default function Popup() {
         })
     }
     data()
-    // setTimeout(() => {
-    //   setLoading(false)
-    //   setLiveDataList(dummy)
-    // }, 500)
   }, [])
 
   const openLivePage = (url: string) => {
@@ -160,10 +98,10 @@ export default function Popup() {
                   ].join(' ')}
                 >
                   {liveData.state === 'upcoming' ? (
-                    <p className="popupLabel">さなちゃんねるの配信予定</p>
+                    <p className="popupLabel">さなちゃんねる coming soon...</p>
                   ) : (
                     liveData.state === 'live' && (
-                      <p className="popupLabel">さなちゃんねる現在配信中</p>
+                      <p className="popupLabel">さなちゃんねる live now!</p>
                     )
                   )}
                   <a
